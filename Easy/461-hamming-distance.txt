@@ -1,0 +1,20 @@
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+Code:
+class Solution {
+    public int hammingDistance(int x, int y) {
+        int distance=0;
+        while((x>=0 && y>0) || (x>0 && y>=0)){
+            int x1=x%2;
+            x=x/2;
+            int y1=y%2;
+            y=y/2;
+
+            if(x1!=y1){
+                distance++;
+            }
+        }
+        return distance;
+    }
+}
