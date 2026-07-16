@@ -1,0 +1,46 @@
+Time Complexity: O(n * log max(bloomDay))
+Space Complexity: O(1)
+
+Code:
+class Solution {
+    public int minDays(int[] bloomDay, int m, int k) {
+        if( (long) m*k > bloomDay.length) return -1;
+
+        int low = Arrays.stream(bloomDay).min().getAsInt();
+        int high = Arrays.stream(bloomDay).max().getAsInt();
+
+        int minDays=0;
+
+        while(low<=high){
+            int mid=(low+high)/2;
+
+            int count=countBouquets(bloomDay, m, k, mid);
+
+            if(count>=m){
+                minDays=mid;
+                high=mid-1;
+            }
+            else{
+                low=mid+1;
+            }
+        }
+        return low;
+    }
+    public static int countBouquets(int[] arr, int m, int k, int mid){
+        int adjacentCount=0;
+        int total=0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]<=mid){
+                adjacentCount++;
+                if(adjacentCount==k){
+                    total++;
+                    adjacentCount=0;
+                }
+            }
+            else{
+                adjacentCount=0;
+            }
+        }
+        return total;
+    }
+}
