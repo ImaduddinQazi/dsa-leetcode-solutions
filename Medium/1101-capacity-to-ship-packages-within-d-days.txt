@@ -1,0 +1,48 @@
+Time Complexity: O(n * log sum(weights))
+Space Complexity: O(1)
+
+Code:
+class Solution {
+    public int shipWithinDays(int[] weights, int days) {
+        int low=weights[0];
+        int high=0;
+        //low = highest value in weights
+        //high = sum of all elements of weights
+        for(int i=0;i<weights.length;i++){
+            if(weights[i]>low) low=weights[i];
+            high+=weights[i];
+        }
+        int minDays=0;
+        while(low<=high){
+            int mid=(low+high)/2;
+
+            int daysCount=countDays(weights, days, mid);
+
+            if(daysCount<=days){
+                minDays=mid;
+                high=mid-1;
+            }
+            else{
+                low=mid+1;
+            }
+        }
+        return minDays;
+    }
+    public static int countDays(int[] weights, int days, int mid){
+        int count=0;
+        int sum=0;
+
+        for(int i=0;i<weights.length;i++){
+            if((sum+weights[i])<=mid){
+                sum+=weights[i];
+            }
+            else{
+                count++;
+                sum=0;
+                sum+=weights[i];
+            }
+        }
+        if(sum>=0) count++;
+        return count;
+    }
+}
