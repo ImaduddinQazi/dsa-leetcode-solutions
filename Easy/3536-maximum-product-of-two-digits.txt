@@ -1,0 +1,18 @@
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+Code:
+class Solution {
+    public int maxProduct(int n) {
+        int product=0;
+        int max=n%10;
+        n=n/10;
+        while(n>0){
+            int x=n%10;
+            if(x*max>product) product=x*max;
+            if(x>max) max=x;
+            n=n/10;
+        }
+        return product;
+    }
+}
