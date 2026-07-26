@@ -1,0 +1,40 @@
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+Code:
+class Solution {
+    public int maximumProduct(int[] nums) {
+        int big=Integer.MIN_VALUE;
+        int bigger=Integer.MIN_VALUE;
+        int biggest=Integer.MIN_VALUE;
+
+        int small=Integer.MAX_VALUE;
+        int smallest=Integer.MAX_VALUE;
+
+        for(int i=0;i<nums.length;i++){
+            //for 3 bigs
+            if(nums[i]>biggest){
+                big=bigger;
+                bigger=biggest;
+                biggest=nums[i];
+            }
+            else if(nums[i]>bigger){
+                big=bigger;
+                bigger=nums[i];
+            }
+            else if(nums[i]>big){
+                big=nums[i];
+            }
+
+            //for 2 small
+            if(nums[i]<smallest){
+                small=smallest;
+                smallest=nums[i];
+            }
+            else if(nums[i]<small){
+                small=nums[i];
+            }
+        }
+        return Math.max(big*bigger*biggest,small*smallest*biggest);
+   }
+}
