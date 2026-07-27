@@ -1,0 +1,21 @@
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+Code:
+class Solution {
+    public int maxProduct(int[] nums) {
+        int i=Integer.MIN_VALUE;
+        int j=Integer.MIN_VALUE;
+
+        for(int x=0;x<nums.length;x++){
+            if(nums[x]>=j){
+                i=j;
+                j=nums[x];
+            }
+            else if(nums[x]>=i){
+                i=nums[x];
+            }
+        }
+        return (i-1)*(j-1);
+    }
+}
