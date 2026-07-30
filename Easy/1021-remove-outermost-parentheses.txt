@@ -1,0 +1,24 @@
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+Code:
+class Solution {
+    public String removeOuterParentheses(String s) {
+        StringBuilder sb= new StringBuilder();
+
+        int x=0;
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+            
+            if( ch == '('){
+                if(x>=1) sb.append(ch);
+                x++;
+            }
+            else{ // ')'
+                x--;
+                if(x>=1) sb.append(ch);
+            }
+        }
+        return sb.toString();
+    }
+}
