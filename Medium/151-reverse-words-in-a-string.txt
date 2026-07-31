@@ -1,0 +1,28 @@
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+code:
+class Solution {
+    public String reverseWords(String s) {
+        StringBuilder sb=new StringBuilder();
+
+        s=s.trim();
+        int j=s.length()-1;
+        int i=j;
+        while(j>=0){
+            i=j;
+            while(i>=0 && s.charAt(i)!=' '){
+                i--;
+            }
+            sb.append(s.substring(i+1,j+1));
+            sb.append(" ");
+
+            j=i-1;
+
+            while(j>=0 && s.charAt(j)==' ' ){
+                j--;
+            }
+        }
+        return sb.toString().trim();
+    }
+}
