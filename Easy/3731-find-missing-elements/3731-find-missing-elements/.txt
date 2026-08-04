@@ -1,0 +1,29 @@
+Time Complexity: O(n)
+Space Complexity: O(n)
+
+Code:
+class Solution {
+    public List<Integer> findMissingElements(int[] nums) {
+        HashSet<Integer> hs = new HashSet<>();
+
+        int min=nums[0];
+        int max=nums[0];
+
+        for(int i=0;i<nums.length;i++){
+            hs.add(nums[i]);
+
+            if(nums[i]>max) max=nums[i];
+
+            if(nums[i]<min) min=nums[i];
+        }
+
+        List<Integer> ls=new ArrayList<>();
+
+        for(int i=min;i<max;i++){
+            if(!hs.contains(i)){
+                ls.add(i);
+            }
+        }
+        return ls;
+    }
+}
