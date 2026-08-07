@@ -1,0 +1,22 @@
+Time Complexity: O(n)
+Space Complexity: O(n)
+
+Code:
+class Solution {
+    public boolean rotateString(String s, String goal) {
+
+        int n=s.length();
+
+        StringBuilder sb=new StringBuilder(s);
+
+        for(int i=0;i<=n;i++){
+            char ch1=sb.charAt(0);
+
+            sb.delete(0,1);
+            sb.append(ch1);
+
+            if(sb.toString().equals(goal)) return true;
+        }
+        return false;
+    }
+}
