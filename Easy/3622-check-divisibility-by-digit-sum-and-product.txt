@@ -1,0 +1,24 @@
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+Code:
+class Solution {
+    public boolean checkDivisibility(int n) {
+        int x=n;
+        int sumDigit=0;
+        while(x>0){
+            sumDigit+=x%10;
+            x=x/10;
+        }
+        x=n;
+        int ProductDigit=1;
+        while(x>0){
+            int temp=x%10;
+            ProductDigit*=temp;
+            x=x/10;
+        }
+        int SUM=sumDigit+ProductDigit;
+        if(n%SUM==0) return true;
+        return false;
+    }
+}
