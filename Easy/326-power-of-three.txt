@@ -1,0 +1,16 @@
+Time Complexity: O(n)
+Space Complexity: O(1)
+
+Code:
+class Solution {
+    public boolean isPowerOfThree(int n) {
+        if(n<=0) return false;
+
+        //Using x just to preserve the input n
+        int x=n;
+        while(x%3==0){
+            x=x/3;
+        }
+        return x==1;
+    }
+}
