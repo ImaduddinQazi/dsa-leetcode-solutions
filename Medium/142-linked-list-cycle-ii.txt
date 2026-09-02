@@ -1,0 +1,36 @@
+Time Complexity: O(n)
+Space Complexity: O(n)
+
+Code:
+import java.util.HashSet;
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        HashSet<ListNode> hs=new HashSet<>();
+        if(head==null || head.next==null) return null;
+
+        ListNode temp=head;
+        while(temp!=null){
+            if(hs.contains(temp)){
+                return temp;
+            }
+            else{
+                hs.add(temp);
+            }
+            temp=temp.next;
+        }
+        return null;
+    }
+}
+
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
